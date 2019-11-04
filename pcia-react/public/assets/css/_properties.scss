@@ -1,0 +1,82 @@
+//     WIDTHS AND HEIGHTS
+//     MARGINS AND PADDINGS
+//     LINKS AND BUTTONS
+//     SHADOW
+//     LINKS AND BUTTONS
+
+/* WIDTHS AND HEIGHTS */
+.width-100{
+  width:100%
+}
+.width-66{
+  width: 66%;
+}
+.width-80{
+  width: 80%;
+}
+.width-50{
+  width: 50%;
+}
+.width-fitcontent{
+  width: fit-content;
+}
+.minheight-2rem{
+  min-height: 2rem;
+}
+.minheight-4rem{
+  min-height: 4rem;
+}
+.minheight-6rem{
+  min-height: 6rem;
+}
+.minheight-8rem{
+  min-height: 8rem;
+}
+.minheight-10rem{
+  min-height: 10rem;
+}
+.minheight-16rem{
+  min-height: 16rem;
+}
+.minheight-20rem{
+  min-height: 20rem;
+}
+.minheight-30rem{
+  min-height: 30rem;
+}
+.minheight-32rem{
+  min-height: 32rem;
+}
+.minheight-50vh{
+  height: 50vh;
+}
+.minheight-66vh{
+  min-height: 66vh;
+}
+.height-20rem{
+  height: 20rem;
+}
+.height-24rem{
+  height: 24rem;
+}
+.height-30rem{
+  height: 30rem;
+}
+.height-32rem{
+  height: 32rem;
+}
+.height-64rem{
+  height: 64rem;
+}
+.height-100{
+  height: 100%;
+}
+
+
+// SHADOW
+.shadow{
+  box-shadow: 6,  12, 24, rgba(0,0,0,0.12);
+  &:hover{
+    box-shadow: 6,  16, 32, rgba(0,0,0,0.33);
+  }
+}

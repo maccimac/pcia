@@ -1,0 +1,148 @@
+// TABLE OF CONTENTS
+//   I. Variables
+// @import 'variables';
+$mutedblue: #365576;
+$blue: #10365d;
+$darkblue: #030c15;
+$yellow: #f4ab2a;
+$gray: #999;
+
+$gradient: linear-gradient(to bottom, $blue 0%, $darkblue 100%);
+
+//   II. Essentials
+// @import 'essentials';
+
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', Trebuchet, sans-serif;
+}
+
+*, html, body{
+  font-size: 15px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#root{
+  padding: 0;
+  margin:0;
+}
+
+//   III. Typography
+h1{
+  font-size: 6rem;
+  font-weight: 100;
+}
+h2{
+  font-size: 3rem;
+}
+h3{
+  @extend h1;
+  font-size: 3rem;
+  color: $gray;
+}
+h4{
+  font-weight: 600;
+  font-size: 1rem;
+  color: $blue;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+
+}
+
+Link, a{
+  color: $yellow;
+}
+
+.text-yellow{
+  color: $yellow;
+}
+.text-blue{
+  color: $blue;
+}
+.text-red{
+  color: red;
+}
+.text-mutedblue{
+  color: $mutedblue;
+}
+
+//  IV. Properties
+@import 'properties';
+
+//   V. Template Layout
+// @import 'template';
+#template-header{
+  background: $gradient;
+}
+
+#main-nav{
+
+  .nav-item{
+    margin: auto 1rem;
+    color: #fff;
+  }
+  .disabled{
+    color: #888;
+  }
+  .btn{
+    background: transparent;
+    color: $yellow;
+    border: 1px solid $yellow;
+    border-radius: 0;
+    padding: 1rem 2.5rem;
+  }
+}
+
+//   VI. Components / Modules and Hacks
+// @import 'components';
+.btn-primary{
+  background: $gradient;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+}
+
+.btn-success{
+  background: $yellow;
+  color: #fff;
+  border-radius: 0;
+  border: 0;
+}
+
+.btn-outline-success{
+  background: transparent;
+  color: $yellow;
+  border: 1px solid $yellow;
+  border-radius: 0;
+}
+
+
+//   VII. Pages Layout
+    // VI.1 HOME
+// @import 'pages.home';
+//
+
+//   VIII. Accesories
+// @import 'accesories';
+.bg-gradient{
+  background: $gradient
+}
+.bg-darkblue{
+  background: $darkblue
+}
+.bg-graylight{
+  background: #f2f2f2;
+}
+.find{
+  border: 1px solid red;
+}
+
+//   IX. Reponsive
+//     LAYOUT
+//     MODULES
