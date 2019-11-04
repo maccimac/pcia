@@ -1,6 +1,8 @@
 import React, { useState, useEffect, Fragment} from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import Template from '../template'
+
+import Header from '../template/Header';
+import Footer from '../template/Footer';
 
 const ComingSoon = ( ) => {
   const [pw, setPw] = useState("");
@@ -36,19 +38,18 @@ const ComingSoon = ( ) => {
 
 
   return(
-    <Template
-      header={{
-        title: "Coming Soon",
-        sub: "Philippine Concrete International Association ",
-        children: getPassword()
-      }}
-       >
-         {redirect?
-           <Redirect to="/home" />
-           : null
-         }
+    <Fragment>
+      <Header
+        title="Coming Soon"
+        sub="Philippine Concrete International Association"
+        showNav={false}
+        >
 
-    </Template>
+        {getPassword()}
+      </Header>
+      {redirect ? <Redirect to="/home"/> : null}
+      <Footer/>
+    </Fragment>
   )
 }
 

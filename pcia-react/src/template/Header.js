@@ -5,11 +5,13 @@ const Header = (
   {title,
   sub,
   style,
-  children}
+  children,
+  showNav=true
+}
 ) => (
   <Fragment>
     <section id="template-header" style={style}>
-      <Nav/>
+      {showNav ? <Nav/> : null}
 
       <div className="container p-4">
         <div className="minheight-8rem">&nbsp;</div>

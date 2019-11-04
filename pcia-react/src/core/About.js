@@ -19,6 +19,8 @@ const About = ( ) => (
               Concrete producers and suppliers
             </h3>
             <p>
+              PCIA strives to create meaningful seminars and events throughout the year to develop a sense of community for its registered members. From the array of technical seminars, general assemblies and fellowships to sports and Christmas events, there are more than enough ways for you to be involved. We try to take an active role to create worthwhile occasions that create lasting impressions for our members.
+</p><p>
               PCIA is an association of concrete producers, raw materials suppliers, testing laboratories and other allied companies who want to promote quality concrete
             </p>
           </div>
@@ -35,7 +37,7 @@ const About = ( ) => (
           </div>
           <div className="col-sm-8">
             <h4>
-              Our Vision
+              Our Mission
             </h4>
             <p>
             Our mission begins with establishing an association of professional companies and individuals doing business in the Philippines, committed to improving quality standards related to the production of concrete products and services.

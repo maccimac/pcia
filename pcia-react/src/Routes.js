@@ -5,6 +5,7 @@ import About from './core/About'
 import Membership from './core/Membership'
 import ContactUs from './core/ContactUs'
 import ComingSoon from './core/ComingSoon'
+import Events from './core/Events'
 
 
 const Routes = () => {
@@ -16,6 +17,7 @@ const Routes = () => {
         <Route path="/about" exact component={About}/>
         <Route path="/membership" exact component={Membership}/>
         <Route path="/contact-us" exact component={ContactUs}/>
+        <Route path="/events" exact component={Events}/>
 
       </Switch>
     </BrowserRouter>

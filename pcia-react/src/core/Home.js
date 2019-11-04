@@ -11,6 +11,9 @@ const Home = () => {
           <p>
             We are a network of construction companies and suppliers promoting the high standard of concrete products and services in the Philippines.
           </p>
+          <p>
+            PCIA strives to create meaningful seminars and events throughout the year to develop a sense of community for its registered members.
+          </p>
           <div>
             <Link to="/about">About Us</Link> &nbsp; | &nbsp; <a href="">Facebook</a>
 
@@ -142,7 +145,7 @@ const Home = () => {
             <h3 className="mb-5">Follow Us on Facebook</h3>
 
               {fbTimelineIframe()}
-            
+
 
           </div>
         </div>
