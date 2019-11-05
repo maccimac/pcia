@@ -41,7 +41,7 @@ const ComingSoon = ( ) => {
     <Fragment>
       <Header
         title="Coming Soon"
-        sub="Philippine Concrete International Association"
+        sub="Philippine Concrete Industry Association"
         showNav={false}
         >
 

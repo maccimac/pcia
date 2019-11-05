@@ -24,29 +24,7 @@ const Home = () => {
     </div>
 
   )
-  const fbAccessToken = "EAAO9yEdWoRsBACSvQYZAhtR3i0RW7b6OCOgKxZCr4kre9atJzL6qxBc4EDZCCpbtZC3cb4ltpB3mCCL7XkhBOQfUpdElRArQlnLp2kSAeWzNqZCGY2RZA84XzME5ABqBNp7SJsx6Wysg0cwJR8foVCi7giwfOe3osRFGZAQG6RYHao9pZAZB8WFobLKVIPyNe9ZBgZD"
-  const fbData =
-`https://graph.facebook.com/v5.0/philconcrete?fields=events%7Bname%2Cend_time%7D&access_token=${fbAccessToken}`;
-
-
-  const fetchFbData = () =>{
-
-    fetch(fbData)
-    .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-      return data.events.data
-      })
-    .catch(e =>{
-      console.log(e)
-      return "hi"
-      }
-    )
-
-  }
-  const getAccessToken = () =>{
-
-  }
+  
   const fbEventIframe = () =>(
     <Fragment>
       <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fphilconcrete%2F&tabs=events&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=1053092818100507" style={{

@@ -1,8 +1,42 @@
-import React, { useState, useEffect, Fragment} from 'react';
+import React, { useState, useEffect, Fragment, fs} from 'react';
 import { Link } from 'react-router-dom';
 import Template from '../template'
 
-const About = ( ) => (
+const About = ( ) => {
+
+
+
+  // const getFiles = () =>{
+  //   const testFolder = './assets/img/album';
+  //   const fs = require('fs');
+  //
+  //   fs.readdir(testFolder, (err, files) => {
+  //     files.forEach(file => {
+  //       console.log(file);
+  //     });
+  //   });
+  //
+  //
+  // }
+  //
+  // useState(
+  //   ()=>{
+  //     getFiles();
+  //   }, []
+  // )
+  const fetchImgs = () =>{
+    let code;
+    for (let i = 1; i <= 9; i++) {
+        let src = '/assets/img/album/'+i+'.png';
+        code +=`
+        <div className='col-sm-4 my-2'>
+          <img src=${src} alt='src' className='w-100'/>
+          `
+        }
+    return code
+
+  }
+  return (
   <Template
     header={{title: "About Us"}}
     >
@@ -18,9 +52,7 @@ const About = ( ) => (
             <h3>
               Concrete producers and suppliers
             </h3>
-            <p>
-              PCIA strives to create meaningful seminars and events throughout the year to develop a sense of community for its registered members. From the array of technical seminars, general assemblies and fellowships to sports and Christmas events, there are more than enough ways for you to be involved. We try to take an active role to create worthwhile occasions that create lasting impressions for our members.
-</p><p>
+              <p>
               PCIA is an association of concrete producers, raw materials suppliers, testing laboratories and other allied companies who want to promote quality concrete
             </p>
           </div>
@@ -97,35 +129,54 @@ const About = ( ) => (
             <h3>The PCIA Community</h3>
           </div>
           <div className="col-sm-8">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+            <p>PCIA strives to create meaningful seminars and events throughout the year to develop a sense of community for its registered members. From the array of technical seminars, general assemblies and fellowships to sports and Christmas events, there are more than enough ways for you to be involved. We try to take an active role to create worthwhile occasions that create lasting impressions for our members.</p>
           </div>
         </div>
         <div className="minheight-4rem">&nbsp;</div>
         <div className="row">
           <div className="col-sm-4 my-2">
-            <img src="/assets/img/PCIA-team_1086.jpg" alt="" className="w-100"/>
+            <img src="/assets/img/album/1.png" alt="" className="w-100"/>
           </div>
           <div className="col-sm-4 my-2">
-            <img src="/assets/img/PCIA-team_1086.jpg" alt="" className="w-100"/>
+            <img src="/assets/img/album/2.png" alt="" className="w-100"/>
           </div>
           <div className="col-sm-4 my-2">
-            <img src="/assets/img/PCIA-team_1086.jpg" alt="" className="w-100"/>
+            <img src="/assets/img/album/3.png" alt="" className="w-100"/>
           </div>
           <div className="col-sm-4 my-2">
-            <img src="/assets/img/PCIA-team_1086.jpg" alt="" className="w-100"/>
+            <img src="/assets/img/album/4.png" alt="" className="w-100"/>
           </div>
           <div className="col-sm-4 my-2">
-            <img src="/assets/img/PCIA-team_1086.jpg" alt="" className="w-100"/>
+            <img src="/assets/img/album/5.png" alt="" className="w-100"/>
           </div>
           <div className="col-sm-4 my-2">
-            <img src="/assets/img/PCIA-team_1086.jpg" alt="" className="w-100"/>
+            <img src="/assets/img/album/6.png" alt="" className="w-100"/>
           </div>
+          <div className="col-sm-4 my-2">
+            <img src="/assets/img/album/7.png" alt="" className="w-100"/>
+          </div>
+          <div className="col-sm-4 my-2">
+            <img src="/assets/img/album/8.png" alt="" className="w-100"/>
+          </div>
+          <div className="col-sm-4 my-2">
+            <img src="/assets/img/album/9.png" alt="" className="w-100"/>
+          </div>
+
+
+          {/* {
+            for(let i = 1; i <= 9; i++)(
+                `<div className='col-sm-4 my-2'>
+                  <img src=/assets/img/album/${src}.png alt='src' className='w-100'/>
+                  `
+                )
+          } */}
+
         </div>
       </div>
       <div className="minheight-8rem">&nbsp;</div>
 
     </section>
   </Template>
-)
+)}
 
 export default About;

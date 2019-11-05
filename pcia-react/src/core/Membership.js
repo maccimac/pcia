@@ -258,7 +258,7 @@ const Membership = ( ) => {
                   {checkbox("I have read and understood the  payment instructions")}
                   {checkbox("I have a copy of deposit slip that I can attach right now")}
 
-                  <input type="submit" className="btn btn-lg btn-primary py-4 px-5 m-5" value="Submit Membership Form"/>
+                  <button type="submit" className="btn btn-lg btn-primary py-4 px-5 m-5" > Submit Membership Form</button> 
 
                 </div>
 
