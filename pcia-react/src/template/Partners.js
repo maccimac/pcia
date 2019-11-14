@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Partners = () => (
   <div className="container text-center">
-    <h3 className="mb-5">Our Partners</h3>
+    <h3 className="mb-5">Our Affiliates</h3>
     <div className="row d-flex justify-content-center">
 
       <div className="col-sm-3 p-2">

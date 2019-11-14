@@ -250,15 +250,20 @@ const Events = ( ) => {
 
         </div>
 
-        <p className="mx-5">
-          <em className="text-red">
-            Don’t forget to email us the copy of deposit slip made for this payment so we can issue necessary official receipts.
-          </em>
-        </p>
-        {checkbox("I have read and understood the  payment instructions")}
-        {checkbox("I have a copy of deposit slip that I can attach right now")}
 
-        <button type="submit" className="btn btn-lg btn-primary py-4 px-5 m-5" > Reserve Your Slot</button>
+
+        <div className="text-center">
+          <p className="mx-5">
+            <em className="text-red">
+              Don’t forget to email us the copy of deposit slip made for this payment so we can issue necessary official receipts.
+            </em>
+          </p>
+          {checkbox("I have read and understood the  payment instructions")}
+          {checkbox("I have a copy of deposit slip that I can attach right now")}
+
+          <button type="submit" className="btn btn-lg btn-primary py-4 px-5 m-5" > Reserve Your Slot</button>
+        </div>
+
 
 
       </div>
