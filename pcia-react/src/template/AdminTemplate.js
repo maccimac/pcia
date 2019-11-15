@@ -38,10 +38,10 @@ const AdminTemplate = ({
                   <Link to="/admin/members" className="btn btn-primary btn-lg">
                     View All Members
                   </Link>
-                  {/* <li className="nav-item">
-                    <Link className="nav-link active" to="#">All Members</Link>
-                  </li>
                   <li className="nav-item">
+                    <Link className="nav-link active" to="/admin/members/add">Add New Member</Link>
+                  </li>
+                  {/* <li className="nav-item">
                     <Link className="nav-link" to="#">Link</Link>
                   </li> */}
                 </div>
@@ -53,10 +53,11 @@ const AdminTemplate = ({
 
                     <Link className="btn btn-primary btn-lg" to="#">Event Registrations</Link>
 
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link className="nav-link" to="#">Link</Link>
-                  </li>
+                  </li> */}
                 </div>
+
 
 
 

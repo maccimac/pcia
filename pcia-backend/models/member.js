@@ -23,11 +23,33 @@ const memberSchema = new mongoose.Schema({
   },
   industrytype: {
     type: String,
+    default: "Others...",
+    enum: [
+      "Others...",
+      "Ready Mix Concrete",
+      "Engineering",
+      "Contractor",
+      "Concrete Block",
+      "Cement Manufacturer",
+      "Architect",
+      "Consultant",
+      "Prestess / Precast",
+      "Chemical Admixtures",
+      "Testing Laboratory",
+      "Mineral Admixtures",
+      "Aggregates"
+     ]
+
   },
   membershiptype: {
     type: String,
+    enum: [
+      "Corporate",
+      "Individual"
+    ]
   },
-  years: [Number]
+  years:
+    {type: [Number]}
 
 })
 

@@ -12,18 +12,20 @@ export const getMembers = () =>{
   })
 }
 
-export const verifyMember = (memberId, year) =>{
+export const verifyMember = (memberId, year) => {
+  const newBody ={
+    years: year,
+    _id: memberId
+  }
   return fetch(`${API}/verifyMember/${memberId}/${year}`, {
     method: "PUT",
     headers:{
       Accept: 'application/json',
       "Content-Type" : "application/json",
     },
-    body:{
-      years: `${year}`
-    },
+    body:JSON.stringify(newBody),
     profile: {
-      _id: `${memberId}`
+      "_id": `${memberId}`
     }
   }
 
@@ -35,5 +37,17 @@ export const verifyMember = (memberId, year) =>{
       console.log(err)
     })
 
+}
 
+
+export const getIndType = () =>{
+  return fetch(`${API}/industryValues`, {
+    method: "GET"
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch( err => {
+    console.log(err)
+  })
 }
