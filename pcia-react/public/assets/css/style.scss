@@ -6,7 +6,7 @@ $blue: #10365d;
 $darkblue: #030c15;
 $yellow: #f4ab2a;
 $gray: #999;
-
+$mint: #57c98c;
 $gradient: linear-gradient(to bottom, $blue 0%, $darkblue 100%);
 
 //   II. Essentials
@@ -115,6 +115,12 @@ Link, a{
   border: 0;
 }
 
+.btn-mint{
+  background: $mint;
+  border: 0;
+  margin-right: .6rem;
+}
+
 .btn-outline-success{
   background: transparent;
   color: $yellow;
@@ -130,6 +136,22 @@ Link, a{
 
 //   VIII. Accesories
 // @import 'accesories';
+.pill{
+  border: 1px solid $mint;
+  color: $mint;
+  padding: .2rem .8rem;
+  border-radius: 90px;
+  display: inline-block;
+  margin-right: .4rem;
+}
+.pill-blue{
+  @extend .pill;
+  border: 1px solid $blue;
+  color: $blue;
+}
+
+
+
 .bg-gradient{
   background: $gradient
 }

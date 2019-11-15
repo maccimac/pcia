@@ -26,7 +26,9 @@ const memberSchema = new mongoose.Schema({
   },
   membershiptype: {
     type: String,
-  }
+  },
+  years: [Number]
+
 })
 
 //VIRTUAL FIELD

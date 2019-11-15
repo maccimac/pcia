@@ -1,7 +1,9 @@
 import React, { useState, useEffect, Fragment} from 'react';
 import { Link } from 'react-router-dom';
-import Template from '../template';
+import AdminTemplate from '../template/AdminTemplate';
+import MemberCard from '../template/MemberCard';
 import { getMembers } from './adminApi'
+
 
 
 const Admin = () =>{
@@ -21,17 +23,17 @@ const Admin = () =>{
   },[])
 
   return(
-    <Template
-      header={
-        {
-          title: "Welcome to Admin"
-        }
-      }
+    <AdminTemplate
       >
-      <p>Hi</p>
-      {JSON.stringify(allMembers)}
+    <div className="row shadow border border-warning">
+      <div className="col-md-12  p-5">
+        You have (x) new registrations.
 
-    </Template>
+      </div>
+
+    </div>
+
+    </AdminTemplate>
   )
 }
 

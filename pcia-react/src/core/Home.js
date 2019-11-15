@@ -24,7 +24,7 @@ const Home = () => {
     </div>
 
   )
-  
+
   const fbEventIframe = () =>(
     <Fragment>
       <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fphilconcrete%2F&tabs=events&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=1053092818100507" style={{
@@ -106,7 +106,7 @@ const Home = () => {
             <p className="text-white">
             Join our network of construction companies and suppliers promoting the high standard of concrete products and services in the Philippines.
             </p>
-            <Link to="/be-a-member">
+            <Link to="/membership">
             <button className="btn btn-success btn-lg">Apply as Member</button>
             </Link>
 

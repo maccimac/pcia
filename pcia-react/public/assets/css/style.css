@@ -193,11 +193,31 @@ Link, a {
   border: 0;
 }
 
+.btn-mint {
+  background: #57c98c;
+  border: 0;
+  margin-right: 0.6rem;
+}
+
 .btn-outline-success {
   background: transparent;
   color: #f4ab2a;
   border: 1px solid #f4ab2a;
   border-radius: 0;
+}
+
+.pill, .pill-blue {
+  border: 1px solid #57c98c;
+  color: #57c98c;
+  padding: 0.2rem 0.8rem;
+  border-radius: 90px;
+  display: inline-block;
+  margin-right: 0.4rem;
+}
+
+.pill-blue {
+  border: 1px solid #10365d;
+  color: #10365d;
 }
 
 .bg-gradient {
