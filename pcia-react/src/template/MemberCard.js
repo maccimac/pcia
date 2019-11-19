@@ -1,16 +1,17 @@
 import React, { useState, useEffect, Fragment} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 // import AdminTemplate from '../template/AdminTemplate';
-import { verifyMember } from '../admin/adminApi'
+import { verifyMember, deleteMember } from '../admin/adminApi'
 
 const MemberCard = ({
   member,
-  isAdmin = false
+  isAdmin = false,
 }
 
 ) =>{
 
   const [contact, setContact]= useState([]);
+
   useEffect(
     ()=>{
       setContact(member.contact)
@@ -58,13 +59,27 @@ const MemberCard = ({
 
   const verifyForThisYear = () =>{
     verifyMember(member._id, thisYear)
-      // .then(data=>{
-      //   if(data.error){
-      //     console.log(data.error)
-      //   } else{
-      //     console.log(data)
-      //   }
-      // })
+    .then(
+      (data) =>{
+        window.location.reload();
+      }
+    )
+  }
+
+  const deleteBtn = () =>{
+    const deleteThisMember = () =>{
+      deleteMember(member._id).then(data =>{
+        window.location.reload();
+      });
+    }
+
+    return(
+      <button className="btn btn-danger" onClick={deleteThisMember}>
+        Delete Member
+      </button>
+    )
+
+
   }
 
   const adminSection = () =>{
@@ -80,6 +95,7 @@ const MemberCard = ({
                 Edit Member Details
               </button>
             </Link>
+            {deleteBtn()}
           </div>
 
 
@@ -92,6 +108,7 @@ const MemberCard = ({
 
   return(
     <Fragment>
+
 
       <div className="member-card row shadow my-5 p-4 align-items-center">
         <div className="col-md-7 px-5">

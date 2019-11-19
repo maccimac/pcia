@@ -37,7 +37,9 @@ exports.getIndTypeValues = (req, res) => {
 }
 
 exports.addMember = (req, res) => {
+  console.log("req body: ", req.body)
   const newMember = new Member(req.body)
+
   newMember.save((err,data)=>{
     if(err){
       console.log(err)
@@ -47,5 +49,19 @@ exports.addMember = (req, res) => {
       data
     })
   })
+}
+
+exports.deleteMember = (req,res)=>{
+  let memberId = req.body._id;
+  Member.findOneAndRemove({
+    _id: memberId
+  }, (err,data)=>{
+    if(err){
+      console.log(err)
+      return err
+    }
+    res.json({data})
+  })
+
 
 }

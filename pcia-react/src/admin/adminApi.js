@@ -51,3 +51,38 @@ export const getIndType = () =>{
     console.log(err)
   })
 }
+
+
+export const addMember = (newBody) =>{
+  return fetch(`${API}/addMember`, {
+    method: "POST",
+    headers:{
+      Accept: 'application/json',
+      "Content-Type" : "application/json",
+    },
+    body:JSON.stringify(newBody)
+  }).then(response=>{
+    return response.json();
+  }).catch(err=>{
+    console.log(err)
+  })
+}
+
+export const deleteMember = (memberId) =>{
+  const newBody = {
+    _id: memberId
+  }
+  return fetch(`${API}/deleteMember`,{
+    method: 'DELETE',
+    headers:{
+      Accept: 'application/json',
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newBody)
+    })
+    .then(response=>{
+      return response.json()
+    }).catch(err=>{
+      console.log(err)
+    })
+}

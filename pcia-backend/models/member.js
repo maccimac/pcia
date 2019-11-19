@@ -49,9 +49,14 @@ const memberSchema = new mongoose.Schema({
     ]
   },
   years:
-    {type: [Number]}
+    {type: [Number]},
 
-})
+  applicationtype: {
+    type: String
+  }
+},
+{timestamps: true}
+)
 
 //VIRTUAL FIELD
 // userSchema
