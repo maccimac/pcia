@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import Template from '../template'
+import NewMember from '../core/NewMember';
 
 const Membership = ( ) => {
 
@@ -79,8 +80,9 @@ const Membership = ( ) => {
           marginTop: "-24rem",
         }}>
         <div className="minheight-2rem">&nbsp;</div>
+        <NewMember/>
 
-          <form action="">
+          {/* <form action="">
             <div className="row mb-5">
               <div className="col-sm-12">
                 <h3>Membership Form</h3>
@@ -258,7 +260,7 @@ const Membership = ( ) => {
                   {checkbox("I have read and understood the  payment instructions")}
                   {checkbox("I have a copy of deposit slip that I can attach right now")}
 
-                  <button type="submit" className="btn btn-lg btn-primary py-4 px-5 m-5" > Submit Membership Form</button> 
+                  <button type="submit" className="btn btn-lg btn-primary py-4 px-5 m-5" > Submit Membership Form</button>
 
                 </div>
 
@@ -268,7 +270,7 @@ const Membership = ( ) => {
 
             </div>
 
-          </form>
+          </form> */}
         </div>
 
       <div className="bg-white">

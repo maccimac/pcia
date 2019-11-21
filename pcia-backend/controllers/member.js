@@ -14,12 +14,41 @@ exports.getMembers = (req, res) => {
 }
 
 
+
 exports.verifyMember = (req, res) => {
-  Member.update(
+  // Member.update(
+  //   {_id: req.body._id},
+  //   {$push: {
+  //     years: req.body.years
+  //   }},
+  //   (err,member)=>{
+  //     if(err){
+  //       console.log(err.message)
+  //     }
+  //     res.json(member)
+  //   }
+  // )
+  Member.findOneAndUpdate(
     {_id: req.body._id},
     {$push: {
-      years: req.body.years
-    }},
+          years: req.body.years
+        }
+    },
+    (err,member)=>{
+      if(err){
+        console.log(err.message)
+      }
+      res.json(member)
+    }
+  )
+}
+
+exports.updateMember = (req, res) => {
+  Member.findOneAndUpdate(
+    {_id: req.body._id},
+    {$set: req.body },
+    {upsert: true,
+    new: true},
     (err,member)=>{
       if(err){
         console.log(err.message)
@@ -63,5 +92,17 @@ exports.deleteMember = (req,res)=>{
     res.json({data})
   })
 
+}
 
+exports.getOneMember = (req, res, next, memberId) => {
+  // let memberId = req.body._id;
+  Member.findById(memberId)
+  .exec((err,data)=>{
+    if(err){
+      console.log(err)
+      return err
+    }
+    res.json({data})
+  }
+)
 }

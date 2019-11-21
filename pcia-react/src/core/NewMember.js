@@ -6,6 +6,7 @@ import Template from "../template";
 const NewMember = ({ isAdmin = false }) => {
   //Industry type
   const [indVals, setIndVals] = useState([]);
+  const [successMsg, setSuccessMsg] = useState(false);
   const [memberDetails, setMemberDetails] = useState({
     companyname: "",
     contact: {
@@ -18,8 +19,10 @@ const NewMember = ({ isAdmin = false }) => {
     industrytype: "Others...",
     years: [],
     membershiptype: "Corporate",
-    applicationtype: "",
+    applicationtype: "New"
   });
+
+
 
   const checkbox = value => (
     <div class="form-check">
@@ -43,23 +46,26 @@ const NewMember = ({ isAdmin = false }) => {
       yearsSince17.push(i);
     }
     return (
-      <ul className="list-inline d-inline-block">
-        {yearsSince17.map((year, index) => {
-          return (
-            <li className="list-inline-item mx-4">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value={year}
-                onChange={handleChange("years")}
-              />
-              <label class="form-check-label" for="defaultCheck1">
-                {year}
-              </label>
-            </li>
-          );
-        })}
-      </ul>
+      <Fragment>
+        Years Verified: &nbsp; <br />
+        <ul className="list-inline d-inline-block">
+          {yearsSince17.map((year, index) => {
+            return (
+              <li className="list-inline-item mx-4">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value={year}
+                  onChange={handleChange("years")}
+                />
+                <label class="form-check-label" for="defaultCheck1">
+                  {year}
+                </label>
+              </li>
+            );
+          })}
+        </ul>
+      </Fragment>
     );
   };
 
@@ -120,8 +126,8 @@ const NewMember = ({ isAdmin = false }) => {
     </div>
   );
 
-  const handleChange = (detailName, ifContact=false) => event => {
-    if(ifContact){
+  const handleChange = (detailName, ifContact = false) => event => {
+    if (ifContact) {
       setMemberDetails({
         ...memberDetails,
         contact: {
@@ -130,14 +136,13 @@ const NewMember = ({ isAdmin = false }) => {
         }
       });
     } else {
-      if(detailName=="years"){
-
-        if (!event.target.checked){
+      if (detailName == "years") {
+        if (!event.target.checked) {
           //remove years
           let updatedYears = memberDetails.years;
-          updatedYears.map((i,k)=>{
-            if(i == event.target.value){
-              updatedYears.splice(k)
+          updatedYears.map((i, k) => {
+            if (i == event.target.value) {
+              updatedYears.splice(k);
             }
           });
           console.log("updatedYears", updatedYears);
@@ -146,39 +151,60 @@ const NewMember = ({ isAdmin = false }) => {
             ...memberDetails,
             years: updatedYears
           });
-
-
         } else {
           //add year to years array
           setMemberDetails({
             ...memberDetails,
-            years: [
-              ...memberDetails.years,
-              event.target.value
-            ]
+            years: [...memberDetails.years, event.target.value]
           });
-
-
         }
-
-
       } else {
-
         setMemberDetails({
           ...memberDetails,
           [detailName]: event.target.value
         });
       }
     }
-
   };
 
-  const saveMember = e =>{
+  const saveMember = (e) => {
     e.preventDefault();
-    addMember(memberDetails)
-  }
+
+    addMember(memberDetails);
+
+    if (isAdmin) {
+      setSuccessMsg("Congratulations! You have added a new user.");
+    } else {
+      setSuccessMsg(
+        "Congratulations! You have sent your application! We emailed you your details. Our admin, Tin, will confirm your membership!"
+      );
+    }
+    setMemberDetails({
+      companyname: "",
+      contact: {
+        contactperson: "",
+        address: "",
+        mobile: "",
+        fax: "",
+        email: ""
+      },
+      industrytype: "Others...",
+      years: [],
+      membershiptype: "Corporate",
+      applicationtype: ""
+    });
+  };
+
   useState(() => {
     getIndType().then(data => setIndVals(data));
+
+    if (isAdmin) {
+      setMemberDetails({
+        ...memberDetails,
+        applicationtype: ""
+      });
+    }
+    
   }, []);
 
   return (
@@ -209,7 +235,7 @@ const NewMember = ({ isAdmin = false }) => {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="inlineRadioOptions"
+                    name="applicationtype"
                     id="inlineRadio1"
                     value="option1"
                   />
@@ -222,7 +248,7 @@ const NewMember = ({ isAdmin = false }) => {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="inlineRadioOptions"
+                    name="applicationtype"
                     id="inlineRadio1"
                     value="option1"
                   />
@@ -239,10 +265,9 @@ const NewMember = ({ isAdmin = false }) => {
               <input
                 className="form-check-input"
                 type="radio"
-                name="inlineRadioOptions"
-              
+                name="membershiptype"
                 value="Corporate"
-                onChange={handleChange('membershiptype')}
+                onChange={handleChange("membershiptype")}
                 checked={
                   memberDetails.membershiptype == "Corporate" ? "checked" : null
                 }
@@ -254,10 +279,9 @@ const NewMember = ({ isAdmin = false }) => {
               <input
                 className="form-check-input"
                 type="radio"
-                name="inlineRadioOptions"
-
+                name="membershiptype"
                 value="Individual"
-                onChange={handleChange('membershiptype')}
+                onChange={handleChange("membershiptype")}
                 checked={
                   memberDetails.membershiptype == "Individual"
                     ? "checked"
@@ -298,7 +322,7 @@ const NewMember = ({ isAdmin = false }) => {
                 className="form-control"
                 placeholder="Full Name of Contact Person"
                 value={memberDetails.contact.contacontactperson}
-                onChange={handleChange("contactperson",true)}
+                onChange={handleChange("contactperson", true)}
               />
             </div>
           </div>
@@ -310,7 +334,7 @@ const NewMember = ({ isAdmin = false }) => {
                 className="form-control"
                 placeholder="Address"
                 value={memberDetails.contact.address}
-                onChange={handleChange("address",true)}
+                onChange={handleChange("address", true)}
               />
             </div>
           </div>
@@ -332,7 +356,7 @@ const NewMember = ({ isAdmin = false }) => {
                 className="form-control"
                 placeholder="Email"
                 value={memberDetails.contact.email}
-                onChange={handleChange('email',true)}
+                onChange={handleChange("email", true)}
               />
             </div>
           </div>
@@ -344,7 +368,7 @@ const NewMember = ({ isAdmin = false }) => {
                 className="form-control"
                 placeholder="Fax"
                 value={memberDetails.contact.fax}
-                onChange={handleChange('fax',true)}
+                onChange={handleChange("fax", true)}
               />
             </div>
           </div>
@@ -356,7 +380,7 @@ const NewMember = ({ isAdmin = false }) => {
                 className="form-control"
                 placeholder="Mobile"
                 value={memberDetails.contact.mobile}
-                onChange={handleChange('mobile',true)}
+                onChange={handleChange("mobile", true)}
               />
             </div>
           </div>
@@ -364,39 +388,44 @@ const NewMember = ({ isAdmin = false }) => {
           <div className="col-sm-3">
             <p>
               Principal Business: &nbsp;
-              <div class="form-group d-inline-block">
-                <select class="form-control" id="exampleFormControlSelect1"
-                onChange={handleChange('industrytype')}
-                >
-                  {indVals.map((ind, i) => {
-                    return (
-                      <option key={i} value={ind}>
-                        {ind}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+              {/* <div class="form-group d-inline-block"> */}
+              <select
+                class="form-control"
+                id="exampleFormControlSelect1"
+                onChange={handleChange("industrytype")}
+              >
+                {indVals.map((ind, i) => {
+                  return (
+                    <option key={i} value={ind}>
+                      {ind}
+                    </option>
+                  );
+                })}
+              </select>
+              {/* </div> */}
             </p>
           </div>
-          <div className="col-sm-3">
-            <p>
-              Years Verified: &nbsp;
-              {isAdmin ? yearsVerified() : null}
-            </p>
+          <div className="col-sm-6">
+            <p>{isAdmin ? yearsVerified() : null}</p>
           </div>
         </div>
         <div className="row">
+          {!isAdmin ? paymentNotes() : null}
           <div className="col-12 text-center">
             <button
-              type="submit"
               className="btn btn-lg btn-primary py-4 px-5 m-5 text-center"
+              type="submit"
             >
               {isAdmin ? "Add Member" : "Submit Membership Form"}
             </button>
           </div>
         </div>
       </form>
+      {successMsg ? (
+        <div class="alert alert-success" role="alert">
+          {successMsg}
+        </div>
+      ) : null}
     </Fragment>
   );
 };

@@ -9,6 +9,7 @@ import Events from './core/Events'
 import Admin from './admin'
 import AdminMembers from './admin/AdminMembers'
 import AdminAddMember from './admin/AdminAddMember'
+import AdminEditMember from './admin/AdminEditMember'
 
 
 const Routes = () => {
@@ -24,6 +25,7 @@ const Routes = () => {
         <Route path="/admin" exact component={Admin}/>
         <Route path="/admin/members" exact component={AdminMembers}/>
         <Route path="/admin/members/add" exact component={AdminAddMember}/>
+        <Route path="/admin/members/edit/:memberId" exact component={AdminEditMember}/>
 
       </Switch>
     </BrowserRouter>

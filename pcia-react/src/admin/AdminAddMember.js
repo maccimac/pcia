@@ -11,9 +11,9 @@ const AdminAddMember = ( ) => {
       description=""
       >
 
-    <NewMember
-      isAdmin={true}
-    />
+      <NewMember isAdmin={true}/>
+
+
     </AdminTemplate>
   )
 }

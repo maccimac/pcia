@@ -8,7 +8,8 @@ const { ObjectId } = mongoose.Schema
 const memberSchema = new mongoose.Schema({
   companyname: {
     type: String,
-    maxlength: 32
+    maxlength: 32,
+    required: true
   },
   contact: {
     type: [
@@ -51,9 +52,7 @@ const memberSchema = new mongoose.Schema({
   years:
     {type: [Number]},
 
-  applicationtype: {
-    type: String
-  }
+  applicationtype: String
 },
 {timestamps: true}
 )

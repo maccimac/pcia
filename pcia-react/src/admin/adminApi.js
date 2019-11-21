@@ -12,12 +12,26 @@ export const getMembers = () =>{
   })
 }
 
+export const getOneMember = (memberId) =>{
+  return fetch(`${API}/getOneMember/${memberId}`, {
+    method: "GET"
+  })
+  .then(response => {
+    console.log(response)
+    return response.json();
+  })
+  .catch( err => {
+    console.log(err)
+  })
+}
+
+
 export const verifyMember = (memberId, year) => {
   const newBody ={
     years: year,
     _id: memberId
   }
-  return fetch(`${API}/verifyMember/${memberId}/${year}`, {
+  return fetch(`${API}/verifyMember`, {
     method: "PUT",
     headers:{
       Accept: 'application/json',
@@ -28,7 +42,26 @@ export const verifyMember = (memberId, year) => {
       "_id": `${memberId}`
     }
   }
+)
+  .then(response =>{
+      console.log(response);
+      return response.json();
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+}
 
+export const updateMember = (memberBody) => {
+
+  return fetch(`${API}/updateMember`, {
+    method: "PUT",
+    headers:{
+      Accept: 'application/json',
+      "Content-Type" : "application/json",
+    },
+    body:JSON.stringify(memberBody)
+  }
 )
   .then(response =>{
       return response.json();

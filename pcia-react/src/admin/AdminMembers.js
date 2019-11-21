@@ -22,13 +22,14 @@ const AdminMembers = () =>{
     memberList();
   },[])
 
+
   return(
     <AdminTemplate
       title="Members"
       description="Find Members"
       >
-      {/* <p>Hi</p>
-      {JSON.stringify(allMembers)} */}
+
+
       <div className="row">
         <div className="col-md-3">
           View All
@@ -47,6 +48,7 @@ const AdminMembers = () =>{
               <MemberCard
                 member={member}
                 isAdmin={true}
+                refresh={memberList}
               />
             )
 

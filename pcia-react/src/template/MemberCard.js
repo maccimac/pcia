@@ -6,17 +6,12 @@ import { verifyMember, deleteMember } from '../admin/adminApi'
 const MemberCard = ({
   member,
   isAdmin = false,
-}
-
-) =>{
+  refresh
+}) =>{
 
   const [contact, setContact]= useState([]);
 
-  useEffect(
-    ()=>{
-      setContact(member.contact)
-    },[]
-  )
+
 
   let thisYear = new Date();
   thisYear = thisYear.getFullYear();
@@ -49,7 +44,6 @@ const MemberCard = ({
     if(!member.years.includes(thisYear)){
       return(
         <Fragment>
-
           <button className="btn btn-mint" onClick={verifyForThisYear}><i>Paid member?</i> Click to  verify for {thisYear}</button>
         </Fragment>
 
@@ -60,8 +54,9 @@ const MemberCard = ({
   const verifyForThisYear = () =>{
     verifyMember(member._id, thisYear)
     .then(
-      (data) =>{
-        window.location.reload();
+      (data) => {
+        console.log(data);
+        refresh()
       }
     )
   }
@@ -69,9 +64,11 @@ const MemberCard = ({
   const deleteBtn = () =>{
     const deleteThisMember = () =>{
       deleteMember(member._id).then(data =>{
-        window.location.reload();
+        refresh()
       });
     }
+
+
 
     return(
       <button className="btn btn-danger" onClick={deleteThisMember}>
@@ -87,10 +84,13 @@ const MemberCard = ({
       return(
         <div className="admin-section d-block my-4">
           <h4>Admin Section</h4>
+          {member.applicationtype ? <span>
+            {member.applicationtype} application!
+          </span> : null}
           <div className="d-block mb-3">
 
             {verifyBtn()}
-            <Link className="" to={"admin/members/edit/"+member._id}>
+            <Link className="" to={"/admin/members/edit/"+member._id}>
               <button className="btn btn-warning">
                 Edit Member Details
               </button>
@@ -105,7 +105,11 @@ const MemberCard = ({
     }
 
   }
-
+  useEffect(
+    ()=>{
+      setContact(member.contact)
+    },[]
+  )
   return(
     <Fragment>
 
@@ -124,14 +128,6 @@ const MemberCard = ({
 
           </div>
           {adminSection()}
-
-
-
-
-
-
-
-
 
 
         </div>
