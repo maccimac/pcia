@@ -78,6 +78,7 @@ export const getIndType = () =>{
     method: "GET"
   })
   .then(response => {
+    console.log(response)
     return response.json();
   })
   .catch( err => {
@@ -118,4 +119,24 @@ export const deleteMember = (memberId) =>{
     }).catch(err=>{
       console.log(err)
     })
+}
+
+
+export const findMember = (searchDetails) =>{
+  return fetch(`${API}/findMember`, {
+    method: "POST",
+    headers:{
+      Accept: 'application/json',
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(searchDetails)
+    }
+  )
+  .then(response => {
+    console.log(response)
+    return response.json();
+  })
+  .catch( err => {
+    console.log(err)
+  })
 }

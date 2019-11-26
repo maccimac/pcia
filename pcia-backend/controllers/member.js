@@ -2,6 +2,7 @@ const Member = require('../models/member');
 
 exports.getMembers = (req, res) => {
   Member.find()
+    .sort({companyname: 1})
     .exec((err, member)=>{
       if(err) {
         return res.status(400).json({
@@ -16,18 +17,6 @@ exports.getMembers = (req, res) => {
 
 
 exports.verifyMember = (req, res) => {
-  // Member.update(
-  //   {_id: req.body._id},
-  //   {$push: {
-  //     years: req.body.years
-  //   }},
-  //   (err,member)=>{
-  //     if(err){
-  //       console.log(err.message)
-  //     }
-  //     res.json(member)
-  //   }
-  // )
   Member.findOneAndUpdate(
     {_id: req.body._id},
     {$push: {
@@ -105,4 +94,19 @@ exports.getOneMember = (req, res, next, memberId) => {
     res.json({data})
   }
 )
+}
+
+exports.findThis = (req, res) => {
+  let searchDetails = req.body;
+
+  Member.find(searchDetails)
+    .exec(
+      (err,data)=>{
+        if(err){
+          return err.message
+        }
+        console.log(data)
+        res.send(data)
+      }
+    )
 }

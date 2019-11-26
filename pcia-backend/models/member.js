@@ -31,14 +31,14 @@ const memberSchema = new mongoose.Schema({
       "Engineering",
       "Contractor",
       "Concrete Block",
-      "Cement Manufacturer",
+      "Cement Manufacturer / Aggregate",
       "Architect",
       "Consultant",
       "Prestess / Precast",
       "Chemical Admixtures",
       "Testing Laboratory",
       "Mineral Admixtures",
-      "Aggregates"
+      "Equipment Distributor / Trader"
      ]
 
   },
@@ -52,7 +52,8 @@ const memberSchema = new mongoose.Schema({
   years:
     {type: [Number]},
 
-  applicationtype: String
+  applicationtype: String,
+  remarks: String
 },
 {timestamps: true}
 )

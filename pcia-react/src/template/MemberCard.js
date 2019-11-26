@@ -114,10 +114,11 @@ const MemberCard = ({
     <Fragment>
 
 
-      <div className="member-card row shadow my-5 p-4 align-items-center">
+      <div className="member-card row shadow my-5 p-4 align-items-center w-100">
         <div className="col-md-7 px-5">
 
           <h3>{member.companyname}</h3>
+          {member.remarks? <em className="clearfix">{member.remarks}</em>: ""}
           <div className="pill pill-blue">
             {member.industrytype}
           </div>

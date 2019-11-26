@@ -12,7 +12,7 @@ const ComingSoon = ( ) => {
     <div className="container">
       <div className="row text-center">
         <div className="col-sm-6 offset-sm-3">
-          <input className="m-auto px-5 py-2 w-100" type="text" value={pw} placeholder="Enter password review production mode..." onChange={
+          <input className="m-auto px-5 py-2 w-100" type="password" value={pw} placeholder="Enter password review production mode..." onChange={
             (e)=>{
               setPw(e.target.value);
               if(e.target.value==="concrete2020"){

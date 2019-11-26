@@ -22,7 +22,8 @@ const Nav = () => (
               <Link className="nav-item nav-link" to="/about">About PCIA</Link>
               <Link className="nav-item nav-link disabled" to="/news">News and Resources</Link>
               <Link className="nav-item nav-link " to="/events">Event Registration</Link>
-              <Link className="nav-item nav-link disabled" to="/members-only">Members-only Section</Link>
+              <Link className="nav-item nav-link" to="/members-only">Members-only Section</Link>
+              <Link className="nav-item nav-link" to="/admin-access">Admin</Link>
 
               <Link className="nav-item nav-link" to="/contact-us">Contact Us</Link>
             {/*  <li class="nav-item dropdown">
