@@ -1,4 +1,4 @@
-const API = "http://localhost:8000/data"
+const API = "http://167.71.198.111:8000/data"
 
 export const getMembers = () =>{
   return fetch(`${API}/getMembers`, {
