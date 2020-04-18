@@ -9,10 +9,10 @@ const Home = () => {
       <div className="row mb-5">
         <div className="col-12 offset-lg-3 col-lg-6 mb-5 text-light text-center">
           <p>
-            We are a network of construction companies and suppliers promoting the high standard of concrete products and services in the Philippines.
+            We are a network of companies & suppliers promoting the high standard of concrete products & services in the Philippines.
           </p>
           <p>
-            PCIA strives to create meaningful seminars and events throughout the year to develop a sense of community for its registered members.
+            PCIA strives to create meaningful events throughout the year to develop a sense of community for its registered members.
           </p>
           <div>
             <Link to="/about">About Us</Link> &nbsp; | &nbsp; <a href="">Facebook</a>

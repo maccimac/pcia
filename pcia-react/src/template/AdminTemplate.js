@@ -20,7 +20,7 @@ const AdminTemplate = ({
               </a>
             </div>
             <div>
-              <ul class="nav flex-column">
+              <ul className="nav flex-column">
                 <div className="mb-5">
                   <Link to="/admin" className="btn btn-success btn-lg mb-2">
                     Dashboard Home
@@ -41,28 +41,16 @@ const AdminTemplate = ({
                   <li className="nav-item">
                     <Link className="nav-link active" to="/admin/members/add">Add New Member</Link>
                   </li>
-                  {/* <li className="nav-item">
-                    <Link className="nav-link" to="#">Link</Link>
-                  </li> */}
                 </div>
-                <div className="mb-5">
+                {/* <div className="mb-5">
                   <h4>Event Registrations</h4>
                   <p><i>
                     View upcoming registrations.
                   </i></p>
-
-                    <Link className="btn btn-primary btn-lg" to="#">Event Registrations</Link>
-
-                  {/* <li className="nav-item">
-                    <Link className="nav-link" to="#">Link</Link>
-                  </li> */}
-                </div>
-
-
-
-
+                  <Link className="btn btn-primary btn-lg" to="#">Event Registrations</Link>
+                </div> */}
               </ul>
-                          </div>
+            </div>
 
 
           </div>

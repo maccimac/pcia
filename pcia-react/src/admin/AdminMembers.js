@@ -22,7 +22,6 @@ const AdminMembers = () =>{
     memberList();
   },[])
 
-
   return(
     <AdminTemplate
       title="Members"

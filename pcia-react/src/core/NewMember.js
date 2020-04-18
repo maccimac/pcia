@@ -176,7 +176,7 @@ const NewMember = ({ isAdmin = false }) => {
       setSuccessMsg("Congratulations! You have added a new user.");
     } else {
       setSuccessMsg(
-        "Congratulations! You have sent your application! We emailed you your details. Our admin, Tin, will confirm your membership!"
+        "Congratulations! You have sent your application! We emailed you your details. Our admin will confirm your membership!"
       );
     }
     setMemberDetails({
@@ -204,7 +204,7 @@ const NewMember = ({ isAdmin = false }) => {
         applicationtype: ""
       });
     }
-    
+
   }, []);
 
   return (
@@ -253,7 +253,7 @@ const NewMember = ({ isAdmin = false }) => {
                     value="option1"
                   />
                   <label className="form-check-label" for="inlineRadio1">
-                    Full-year
+                    New Member
                   </label>
                 </div>
               </div>

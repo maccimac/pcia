@@ -20,22 +20,11 @@ const Nav = () => (
             <div className="navbar-nav ml-auto">
               <Link className="nav-item nav-link" to="/home">Home</Link>
               <Link className="nav-item nav-link" to="/about">About PCIA</Link>
-              <Link className="nav-item nav-link disabled" to="/news">News and Resources</Link>
               <Link className="nav-item nav-link " to="/events">Event Registration</Link>
               <Link className="nav-item nav-link" to="/members-only">Members-only Section</Link>
               <Link className="nav-item nav-link" to="/admin-access">Admin</Link>
 
               <Link className="nav-item nav-link" to="/contact-us">Contact Us</Link>
-            {/*  <li class="nav-item dropdown">
-              <Link class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Membership
-             </Link>
-             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-               <Link class="dropdown-item" to="/why-be-a-member">Why be a Member</Link>
-               <Link class="dropdown-item" to="/members-only">Members-only Section</Link>
-               <div class="dropdown-divider"></div>
-               <Link class="dropdown-item" to="/be-a-member">Be a Member</Link>
-             </div> */}
 
               <Link className="nav-item nav-link" to="/membership">
                 <button className="btn btn-secondary">

@@ -138,7 +138,7 @@ const MemberCard = ({
             (contactGrp,index) =>(
               <ul>
                 {
-                  contactGrp.contactperson ?
+                  contactGrp.contactperson && isAdmin ?
                    (<li>Contact Person: {contactGrp.contactperson}</li>) : null
 
                 }
@@ -148,12 +148,12 @@ const MemberCard = ({
 
                 }
                 {
-                  contactGrp.phone ?
+                  contactGrp.phone && isAdmin ?
                    (<li>Phone: {contactGrp.phone}</li>) : null
 
                 }
                 {
-                  contactGrp.mobile ?
+                  contactGrp.mobile && isAdmin ?
                    (<li>Mobile: {contactGrp.mobile}</li>) : null
 
                 }

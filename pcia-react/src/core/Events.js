@@ -160,16 +160,11 @@ const Events = ( ) => {
               let today = new Date;
               let eventDate = Date.parse(event.start_time)
               // CODE FOR LAUNCH
-              // if( eventDate > today ){
-              //   return(
-              //     <option>{event.name}</option>
-              //   )
-              // }
-              return(
-                <option value={index}>{event.name}</option>
-              )
-
-
+              if( eventDate > today ){
+                return(
+                  <option>{event.name}</option>
+                )
+              }
             })}
 
           </select>
@@ -206,6 +201,13 @@ const Events = ( ) => {
         <div className="form-check form-check-inline">
           <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
           <label className="form-check-label">Sponsor</label>
+        </div>
+
+        <div class="form-group mt-4">
+          <input type="number" className="form-control col-6" placeholder="Number of attendees"/>
+        </div>
+        <div class="form-group mt-2">
+          <textarea className="form-control" placeholder="List of attendees (optional)" rows="5"></textarea>
         </div>
 
       </div>
