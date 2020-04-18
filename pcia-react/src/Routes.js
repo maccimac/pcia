@@ -19,7 +19,7 @@ const Routes = () => {
   return(
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={ComingSoon}/>
+        <Route path="/" exact component={Home}/>
         <Route path="/home" exact component={Home}/>
         <Route path="/about" exact component={About}/>
         <Route path="/membership" exact component={Membership}/>

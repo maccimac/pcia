@@ -2,10 +2,10 @@
   "name": "pcia-backend",
   "version": "1.0.0",
   "homepage": "http://philconcrete.com",
-  "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +26,19 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.19.4",
     "query-string": "^6.9.0",
+    "uuid": "^7.0.3",
     "uuidv1": "^1.6.14"
-  }
+  },
+  "engines": {
+    "node": "10.16.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maccimac/pcia-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maccimac/pcia-backend/issues"
+  },
+  "description": ""
 }

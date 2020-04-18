@@ -1,4 +1,6 @@
-const API = "http://167.71.198.111:8000/data"
+// const API = "http://localhost:8000/data"
+// const API = "http://localhost:8000/data"
+const API = "https://afternoon-journey-31096.herokuapp.com/data"
 
 export const getMembers = () =>{
   return fetch(`${API}/getMembers`, {

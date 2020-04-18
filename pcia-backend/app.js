@@ -1,3 +1,6 @@
+//DEPLOY ON HEROKU:
+//https://medium.com/make-school/how-to-deploy-your-node-js-mongodb-app-to-the-web-using-heroku-63d4bccf2675
+
 const express = require ('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -44,7 +47,7 @@ app.use((req, res, next) => {
 
 app.use("/data", allRoutes)
 
-const port = process.env.PORT
+const port = process.env.PORT || 8000
 
 app.listen(port, ()=>{
   console.log(`Server is running on port ${port}`);
