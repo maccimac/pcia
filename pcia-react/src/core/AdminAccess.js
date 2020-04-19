@@ -67,7 +67,7 @@ const AdminAccess = ( ) => {
         >
 
       </Template>
-      {redirect ? <Redirect to="/admin"/> : null}
+      {redirect ? <Redirect to="/admin/home"/> : null}
     </Fragment>
   )
 }

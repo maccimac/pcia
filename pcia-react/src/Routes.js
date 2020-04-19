@@ -28,7 +28,7 @@ const Routes = () => {
         <Route path="/contact-us" exact component={ContactUs}/>
         <Route path="/events" exact component={Events}/>
         <Route path="/admin-access" exact component={AdminAccess}/>
-        <Route path="/admin" exact component={Admin}/>
+        <Route path="/admin/home" exact component={Admin}/>
         <Route path="/admin/members" exact component={AdminMembers}/>
         <Route path="/admin/members/add" exact component={AdminAddMember}/>
         <Route path="/admin/members/edit/:memberId" exact component={AdminEditMember}/>
