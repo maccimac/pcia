@@ -12,14 +12,16 @@ const Events = () => {
   const [fbAccessToken, setFbAcessToken] = useState("");
   const [regDetails, setRegDetails] = useState({
     event: "",
+    eventurl: "",
     companyname: "",
     companyaddress: "",
     attendeeorsponsor: "",
-    attendeenum: 0,
+    attendeenum: "",
     attendeenames: "",
     contactname: "",
     mobile: "",
     email: "",
+    ismember:false,
     success: false
   });
 
@@ -47,39 +49,39 @@ const Events = () => {
   };
 
   //TESTED WAYS TO GET ACCESS TOKEN
-  const getAccessToken = () => {
-    FB.api(
-      "oauth/access_token",
-      {
-        client_id: 1716477751937756,
-        client_secret: "f73e3c59135fbbca1657c7d39ec9bdce",
-        grant_type: "page"
-      },
-      function(res) {
-        if (!res || res.error) {
-          console.log(!res ? "error occurred" : res.error);
-          console.log("finding accessToken");
-        }
-        // const accessToken = res.access_token;
-        setFbAcessToken(res.access_token);
-      }
-    );
-  };
-
-  const getAccessToken2 = () => {
-    const FbApi = new FBGraphAPI({
-      clientID: "577327709352187",
-      clientSecret: "4761ba5e0b34320038514820588ccb83"
-      // appAccessToken: 'd53eee1c6d89f0c7daf55140326a5d0a' // Optional
-    });
-
-    FbApi.generateAppAccessToken()
-      .then(appAccessToken => {
-        console.log("appAccessToken 2", appAccessToken);
-        setFbAcessToken(appAccessToken);
-      })
-      .catch(e => console.log("e", e));
-  };
+  // const getAccessToken = () => {
+  //   FB.api(
+  //     "oauth/access_token",
+  //     {
+  //       client_id: 1716477751937756,
+  //       client_secret: "f73e3c59135fbbca1657c7d39ec9bdce",
+  //       grant_type: "page"
+  //     },
+  //     function(res) {
+  //       if (!res || res.error) {
+  //         console.log(!res ? "error occurred" : res.error);
+  //         console.log("finding accessToken");
+  //       }
+  //       // const accessToken = res.access_token;
+  //       setFbAcessToken(res.access_token);
+  //     }
+  //   );
+  // };
+  //
+  // const getAccessToken2 = () => {
+  //   const FbApi = new FBGraphAPI({
+  //     clientID: "577327709352187",
+  //     clientSecret: "4761ba5e0b34320038514820588ccb83"
+  //     // appAccessToken: 'd53eee1c6d89f0c7daf55140326a5d0a' // Optional
+  //   });
+  //
+  //   FbApi.generateAppAccessToken()
+  //     .then(appAccessToken => {
+  //       console.log("appAccessToken 2", appAccessToken);
+  //       setFbAcessToken(appAccessToken);
+  //     })
+  //     .catch(e => console.log("e", e));
+  // };
 
   // useState(()=>{
   //   getEvents()
@@ -100,12 +102,17 @@ const Events = () => {
   );
 
   const headerContent = () => <div className="minheight-10rem">&nbsp;</div>;
+
   const handleChange = e => {
     // console.log(fbEvents[e.target.value]);
-    setSelectedEvent(fbEvents[e.target.value]);
-    console.log();
 
-    // setSelectedEvent(fbEvents.e.target.value)
+    setSelectedEvent(fbEvents[e.target.value]);
+    setRegDetails({
+      ...regDetails,
+      event: selectedEvent.name,
+      eventurl: "https://facebook.com/events/" + selectedEvent.id
+    });
+    console.log(selectedEvent);
   };
 
   const eventDetail = () => {
@@ -118,7 +125,7 @@ const Events = () => {
         <div className="my-5">
           {/* {JSON.stringify(selectedEvent)} */}
           <h4>Event Details</h4>
-          <h5>{selectedEvent.name}</h5>
+          <a href={"https://facebook.com/events/" + selectedEvent.id} target="_blank"><h5>{selectedEvent.name}</h5></a>
           <p>
             To be held on <strong> {date} </strong> at{" "}
             <strong>{selectedEvent.place.name}</strong>.
@@ -161,26 +168,19 @@ const Events = () => {
       ...regDetails,
       [detail]: event.target.value
     });
+    console.log(regDetails)
   };
 
   const sendMail = e => {
     e.preventDefault();
 
     let template_params = {
-      event: selectedEvent,
-      companyname: regDetails.companyname,
-      companyaddress: regDetails.companyaddress,
-      attendeeorsponsor: "",
-      attendeenum: 0,
-      attendeenames: "",
-      contactname: "",
-      mobile: "",
-      email: "",
+      ...regDetails,
       success: false
     };
 
     const service_id = "default_service";
-    const template_id = "template_S4yYHxy0_clone";
+    const template_id = "pcia-event-registration";
     emailjs.send(service_id, template_id, template_params).then(
       function(response) {
         setRegDetails({
@@ -188,11 +188,12 @@ const Events = () => {
           companyname: "",
           companyaddress: "",
           attendeeorsponsor: "",
-          attendeenum: 0,
+          attendeenum: "",
           attendeenames: "",
           contactname: "",
           mobile: "",
           email: "",
+          ismember: false,
           success: true
         });
         console.log("SUCCESS!", response.status, response.text);
@@ -212,7 +213,7 @@ const Events = () => {
     }
   };
 
-  useState(() => {
+  useEffect(() => {
     getEvents();
     emailjs.init("user_7y7r2rpBGQqcTRR11zJWb");
   }, []);
@@ -252,21 +253,22 @@ const Events = () => {
                     //     <option>{event.name}</option>
                     //   )
                     // }
-                    return <option value={event.name}>{event.name}</option>;
+                    return <option value={index}>{event.name}</option>;
                   })}
                 </select>
 
                 {eventDetail()}
+
               </div>{" "}
-              {/* Form group */}
             </div>
           </div>
-          {/* row */}
         </div>
 
         <div className="container p-5">
+
           <div className="row mb-5">
             <h3>More About You</h3>
+            {/* <p>{return regDetails}</p> */}
             <div className="col-sm-12">
               <h4>Your Team / Company</h4>
             </div>
@@ -291,11 +293,11 @@ const Events = () => {
                 <select
                   className="form-control"
                   onChange={handleInput("attendeeorsponsor")}
-                  value={regDetails.attendeeorsponsor}
+                  // value={regDetails.attendeeorsponsor}
                 >
-                  <option>Attendee AND Sponsor</option>
-                  <option>Attendee only</option>
-                  <option>Sponsor only</option>
+                  <option value="Attendee AND Sponsor">Attendee AND Sponsor</option>
+                  <option value=">Attendee only">Attendee only</option>
+                  <option value="Sponsor only">Sponsor only</option>
                 </select>
               </div>
             </div>
@@ -303,13 +305,17 @@ const Events = () => {
               <div className="form-group">
                 <span>Number of attendees</span>
                 <input
-                  type="number"
-                  className="form-control col-12 col-md-6 mb-2" placeholder="1"
+                  type="text"
+                  className="form-control col-12 col-md-6 mb-2"
+                  onChange={handleInput("attendeenum")}
+                  value={regDetails.attendeenum}
                 />
                 <textarea
                   className="form-control"
                   placeholder="List of attendees (optional)"
                   rows="3"
+                  onChange={handleInput("attendeenames")}
+                  value={regDetails.attendeenames}
                 ></textarea>
               </div>
             </div>
@@ -322,24 +328,32 @@ const Events = () => {
               type="text"
               className="form-control col-md-6 mx-1"
               placeholder="Full Name of Contact Person"
+              onChange={handleInput("contactname")}
+              value={regDetails.contactname}
             />
             <input
               type="email"
               className="form-control col-md-3 mx-1"
               placeholder="Email"
+              onChange={handleInput("email")}
+              value={regDetails.email}
             />
             <input
               type="telephone"
               className="form-control col-md-2 mx-1"
               placeholder="Mobile"
+              onChange={handleInput("mobile")}
+              value={regDetails.mobile}
             />
             <div className="form-check form-check-inline col-sm-6 my-2 mx-1">
               <input
                 className="form-check-input"
                 type="checkbox"
-                name="inlineRadioOptions"
-                id="inlineRadio1"
-                value="option1"
+                // name="inlineRadioOptions"
+                // id="inlineRadio1"
+                // value="option1"
+                onChange={handleInput("ismember")}
+                value={regDetails.ismember}
               />
               <label className="form-check-label">
                 I am already a PCIA Member
@@ -385,6 +399,9 @@ const Events = () => {
                   {" "}
                   Reserve Your Slot
                 </button>
+                <div>
+                  {showSuccess()}
+                </div>
               </div>
             </div>
           </div>
