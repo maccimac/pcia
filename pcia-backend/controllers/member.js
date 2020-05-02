@@ -24,7 +24,7 @@ exports.verifyMember = (req, res) => {
     },
     (err,member)=>{
       if(err){
-        console.log(err.message)
+        console.log(err)
       }
       res.json(member)
     }
@@ -102,9 +102,9 @@ exports.findByEmail = (req, res) => {
   })
   .exec((err,data)=>{
     if(err){
-      console.log(err)
-      return err
+      return err.message
     }
+
     res.json({data})
     // console.log(email)
 

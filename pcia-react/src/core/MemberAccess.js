@@ -15,8 +15,8 @@ const MemberAccess = ( ) => {
   const matchPw = function(){
     let userData = {};
     findByEmail(un).then(resData =>{
-      if(resData.error){
-        console.log(resData)
+      console.log(resData);
+      if(resData.error || (resData.data.length == 0)){
         alert("Sorry your email is not in our database.")
       }else{
         let user = resData.data[0];
@@ -27,6 +27,8 @@ const MemberAccess = ( ) => {
           setRedirect(true);
         }else{
           alert(`Hello, ${user.companyname}. Sorry but you have entered incorrect password for ${un}.`)
+
+
         }
 
       }
@@ -44,6 +46,7 @@ const MemberAccess = ( ) => {
 
 
   }
+
 
   const getPassword = () =>(
     <div className="container">
@@ -72,6 +75,10 @@ const MemberAccess = ( ) => {
           </button>
         </div>
 
+        <div className="col-12 text-center p-5">
+          <p className="text-light"><strong className="text-yellow">Forgot your password?</strong> Feel free to request a new password from <u>contact@philconcrete.com</u></p>
+        </div>
+
 
 
         </div>
@@ -80,6 +87,8 @@ const MemberAccess = ( ) => {
     </div>
 
   )
+
+
 
 
   return(

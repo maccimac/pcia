@@ -22,7 +22,7 @@ const AdminTemplate = ({
             <div>
               <ul className="nav flex-column">
                 <div className="mb-5">
-                  <Link to="/admin" className="btn btn-success btn-lg mb-2">
+                  <Link to="/admin/home" className="btn btn-success btn-lg mb-2">
                     Dashboard Home
                   </Link>
                   <Link to="/" className="btn btn-secondary btn-lg mb-2">

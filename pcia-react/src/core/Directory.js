@@ -1,21 +1,24 @@
 import React, { useState, useEffect, Fragment, fs} from 'react';
 import { Link } from 'react-router-dom';
 import Template from '../template';
+import { showLoader } from '../template/utilities';
 import MemberCard from '../template/MemberCard';
 import { getMembers, findMember, getIndType } from '../admin/adminApi'
 
 const Directory = ( ) => {
   const [allMembers, setAllMembers ] = useState([])
   const [indVals, setIndVals] = useState([]);
+  const [loaded, hasLoaded] = useState(false);
 
   const listAll = () =>{
     getMembers()
     .then(data=>{
       if(data.error){
-        console.log( data)
+        console.log(data)
       }else{
         setAllMembers(data)
       }
+      hasLoaded(true)
     });
 
     getIndType().then(data=>{
@@ -40,11 +43,17 @@ const Directory = ( ) => {
         data => {
           if(data.error){
             console.log( data)
+            hasLoaded(true)
           }else{
             setAllMembers(data)
+            hasLoaded(true)
           }
+
         }
-      )
+      ).catch( ()=>{
+        hasLoaded(true);
+
+      })
 
     }
 
@@ -125,9 +134,11 @@ const Directory = ( ) => {
   <Template
     header={{title: "Directory"}}
     >
+    <div className="100 d-flex align-items-center">
+      { showLoader(loaded) }
+    </div>
     <section>
       <div className="container">
-
         <div className="minheight-8rem">&nbsp;</div>
         {filters()}
         <div className="row align-items-center">
@@ -142,9 +153,6 @@ const Directory = ( ) => {
 
             }
           )}
-
-
-
         </div>
 
         <div className="minheight-8rem">&nbsp;</div>

@@ -2,14 +2,12 @@ import React, { useState, useEffect, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import AdminTemplate from '../template/AdminTemplate';
 import MemberCard from '../template/MemberCard';
+import { showLoader } from '../template/utilities';
 import { getMembers, findMember } from './adminApi'
 
 const Admin = () =>{
   const [allMembers, setAllMembers ] = useState([])
   const [newMembers, setNewMembers] = useState([]);
-  const loaderComponent = `
-  <div class="lds-ripple"><div></div><div></div></div>
-  `;
   const [loaded, hasLoaded] = useState(false)
 
 
@@ -45,17 +43,6 @@ const Admin = () =>{
     })
   }
 
-  const showLoader = () => {
-    if(loaded){
-      return ""
-    }else{
-      return(<div className='lds-ripple'><div></div><div></div></div>)
-
-
-    }
-  }
-
-
 
   useEffect(()=>{
     // memberList();
@@ -67,7 +54,7 @@ const Admin = () =>{
     <AdminTemplate
       >
     <div className="100 d-flex align-items-center">
-      {showLoader()}
+      {showLoader(loaded)}
     </div>
 
     <div className="row shadow border border-warning">
