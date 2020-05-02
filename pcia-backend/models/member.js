@@ -51,9 +51,9 @@ const memberSchema = new mongoose.Schema({
   },
   years:
     {type: [Number]},
-
   applicationtype: String,
-  remarks: String
+  remarks: String,
+  password: String
 },
 {timestamps: true}
 )

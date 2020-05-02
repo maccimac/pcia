@@ -15,7 +15,6 @@ exports.getMembers = (req, res) => {
 }
 
 
-
 exports.verifyMember = (req, res) => {
   Member.findOneAndUpdate(
     {_id: req.body._id},
@@ -94,6 +93,22 @@ exports.getOneMember = (req, res, next, memberId) => {
     res.json({data})
   }
 )
+}
+
+exports.findByEmail = (req, res) => {
+  let memEmail = req.params.memberEmail;
+  Member.find({
+    'contact.email': memEmail
+  })
+  .exec((err,data)=>{
+    if(err){
+      console.log(err)
+      return err
+    }
+    res.json({data})
+    // console.log(email)
+
+  })
 }
 
 exports.findThis = (req, res) => {

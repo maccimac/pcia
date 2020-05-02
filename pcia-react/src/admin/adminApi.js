@@ -1,6 +1,5 @@
-// const API = "http://localhost:8000/data"
-// const API = "http://localhost:8000/data"
-const API = "https://afternoon-journey-31096.herokuapp.com/data"
+const API = "http://localhost:8000/data"
+// const API = "https://afternoon-journey-31096.herokuapp.com/data"
 
 export const getMembers = () =>{
   return fetch(`${API}/getMembers`, {
@@ -16,6 +15,19 @@ export const getMembers = () =>{
 
 export const getOneMember = (memberId) =>{
   return fetch(`${API}/getOneMember/${memberId}`, {
+    method: "GET"
+  })
+  .then(response => {
+    console.log(response)
+    return response.json();
+  })
+  .catch( err => {
+    console.log(err)
+  })
+}
+
+export const findEmail = (memberEmail) =>{
+  return fetch(`${API}/findEmail/${memberEmail}`, {
     method: "GET"
   })
   .then(response => {
@@ -135,10 +147,18 @@ export const findMember = (searchDetails) =>{
     }
   )
   .then(response => {
-    console.log(response)
     return response.json();
   })
   .catch( err => {
+    console.log(err)
+  })
+}
+
+export const findByEmail = (memberEmail) =>{
+  return fetch(`${API}/findByEmail/${memberEmail}`)
+  .then(response=>{
+    return response.json();
+  }).catch(err=>{
     console.log(err)
   })
 }
