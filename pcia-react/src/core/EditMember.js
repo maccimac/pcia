@@ -21,7 +21,8 @@ const EditMember = ({ isAdmin, memberId }) => {
     industrytype: "Others...",
     years: [],
     membershiptype: "Corporate",
-    applicationtype: ""
+    applicationtype: "",
+    password: ""
   });
 
   const checkbox = value => (
@@ -150,7 +151,7 @@ const EditMember = ({ isAdmin, memberId }) => {
     let isit = Array.isArray(memberDetails.contact);
     console.log("is: ", isit);
     console.log(memberDetails.contact);
-    //
+
     memberDetails.contact.map((person, index) => {
       return (
         <div className="col-sm-6">
@@ -200,13 +201,9 @@ const EditMember = ({ isAdmin, memberId }) => {
       <form action="" onSubmit={saveMember}>
         <div className="row mb-5">
           <div className="col-sm-12">
-            <h2>{memberId}</h2>
-            <h3>Membership Form</h3>
-            <p>
-              Please fill our form to register or renew your membership with the
-              association.
-            </p>
-            <p>{JSON.stringify(memberDetails)}</p>
+            {/* <h3>Member ID: {memberId}</h3> */}
+            {/* NOTE: Comment out to see all details */}
+            {/* <p>{JSON.stringify(memberDetails)}</p> */}
           </div>
         </div>
         <div className="row mb-5">
@@ -249,6 +246,25 @@ const EditMember = ({ isAdmin, memberId }) => {
               <label className="form-check-label" for="inlineRadio1">
                 Individual (P 3,000)
               </label>
+            </div>
+          </div>
+        </div>
+        <div className="row mb-5">
+          <div className="col-sm-12 mb-3">
+            <h4>Password</h4>
+            <p>
+              Please nominate a password
+            </p>
+          </div>
+          <div className="col-sm-6">
+            <div class="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="concrete2020"
+                value={memberDetails.password}
+                onChange={handleChange("password")}
+              />
             </div>
           </div>
         </div>

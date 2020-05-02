@@ -50,7 +50,7 @@ const MemberAccess = ( ) => {
       <div className="row">
         <div className="col-sm-8 offset-sm-2 row">
         <div className="col-sm-6">
-          <label className="text-white" htmlFor="">Username</label>
+          <label className="text-white" htmlFor="">Email</label>
           <input className="m-auto px-2 py-2 w-100" type="text" value={un} placeholder="name@companyemail" onChange={
             (e)=>{
               setUn(e.target.value);
