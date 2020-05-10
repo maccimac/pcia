@@ -18,7 +18,7 @@ const Events = () => {
     eventurl: "",
     companyname: "",
     companyaddress: "",
-    attendeeorsponsor: "",
+    attendeeorsponsor: "Attendee AND Sponsor",
     attendeenum: "",
     attendeenames: "",
     contactname: "",
