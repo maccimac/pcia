@@ -5,11 +5,14 @@ import { FB, FacebookApiException } from "fb";
 import { FBGraphAPI } from "fb-graph-api";
 import dateFormat from "dateformat";
 import emailjs from "emailjs-com";
+import { showLoader } from '../template/utilities';
 
 const Events = () => {
+
   const [fbEvents, setFbEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(false);
   const [fbAccessToken, setFbAcessToken] = useState("");
+  const [loaded, hasLoaded] = useState(true);
   const [regDetails, setRegDetails] = useState({
     event: "",
     eventurl: "",
@@ -103,27 +106,25 @@ const Events = () => {
 
   const headerContent = () => <div className="minheight-10rem">&nbsp;</div>;
 
-  const handleChange = e => {
-    // console.log(fbEvents[e.target.value]);
 
-    setSelectedEvent(fbEvents[e.target.value]);
-    setRegDetails({
-      ...regDetails,
-      event: selectedEvent.name,
-      eventurl: "https://facebook.com/events/" + selectedEvent.id
-    });
-    console.log(selectedEvent);
-  };
+  const setEventData = () =>{
+    console.log(selectedEvent)
+
+
+    console.log(regDetails)
+
+  }
 
   const eventDetail = () => {
     // let date = Date.parse(selectedEvent.start_time)
     // date = date.getDate()
     // date.format("m/dd/yy")
     if (selectedEvent) {
+
       let date = dateFormat(selectedEvent.start_time, "fullDate");
       return (
         <div className="my-5">
-          {/* {JSON.stringify(selectedEvent)} */}
+          { /*JSON.stringify(selectedEvent) */}
           <h4>Event Details</h4>
           <a href={"https://facebook.com/events/" + selectedEvent.id} target="_blank"><h5>{selectedEvent.name}</h5></a>
           <p>
@@ -164,15 +165,35 @@ const Events = () => {
 
   //SEND TO EMAIL
   const handleInput = detail => event => {
-    setRegDetails({
-      ...regDetails,
-      [detail]: event.target.value
-    });
+    let index = event.target.value;
+
+
+    if(detail=="event"){
+      let eventData = fbEvents[index];
+      console.log(eventData)
+
+      setSelectedEvent(eventData)
+      setRegDetails({
+        ...regDetails,
+        [detail]: eventData["name"],
+        ["eventurl"]: "https://facebook.com/events/" + eventData["id"]
+      });
+
+    }else{
+      setRegDetails({
+        ...regDetails,
+        [detail]: event.target.value
+      });
+
+    }
+
     console.log(regDetails)
+
   };
 
   const sendMail = e => {
     e.preventDefault();
+    hasLoaded(false);
 
     let template_params = {
       ...regDetails,
@@ -197,6 +218,7 @@ const Events = () => {
           success: true
         });
         console.log("SUCCESS!", response.status, response.text);
+        hasLoaded(true)
       },
       function(error) {
         console.log("FAILED...", error);
@@ -238,23 +260,31 @@ const Events = () => {
               <h3 className="mb-5">Which event are you interested in?</h3>
               <div className="form-group">
                 <h4>Choose Upcoming Event/s</h4>
+
                 <select
                   className="form-control p-3"
-                  id="exampleFormControlSelect1"
-                  onChange={handleChange}
+                  id="chooseEvent"
+                  // onChange={handleEventChange}
+                  onChange={handleInput("event")}
                 >
-                  <option>...</option>
+                <option selected>...</option>
+
+
                   {fbEvents.map((event, index) => {
+
                     let today = new Date();
                     let eventDate = Date.parse(event.start_time);
                     // CODE FOR LAUNCH
                     // if( eventDate > today ){
+                    //
                     //   return(
-                    //     <option>{event.name}</option>
+                    //       <option value={index}>{event.name}</option>
                     //   )
                     // }
+
                     return <option value={index}>{event.name}</option>;
-                  })}
+                  })
+                }
                 </select>
 
                 {eventDetail()}
@@ -295,8 +325,8 @@ const Events = () => {
                   onChange={handleInput("attendeeorsponsor")}
                   // value={regDetails.attendeeorsponsor}
                 >
-                  <option value="Attendee AND Sponsor">Attendee AND Sponsor</option>
-                  <option value=">Attendee only">Attendee only</option>
+                  <option value="Attendee AND Sponsor" selected>Attendee AND Sponsor</option>
+                  <option value="Attendee only">Attendee only</option>
                   <option value="Sponsor only">Sponsor only</option>
                 </select>
               </div>
@@ -400,6 +430,7 @@ const Events = () => {
                   Reserve Your Slot
                 </button>
                 <div>
+                  { showLoader(loaded) }
                   {showSuccess()}
                 </div>
               </div>
